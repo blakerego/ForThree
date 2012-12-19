@@ -1,0 +1,5 @@
+*.suo
+Domain/bin/*
+Domain/obj/*
+ForThree/bin/*
+ForThree/obj/*
