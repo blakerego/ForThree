@@ -7,11 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using ForThree.Implementations;
+using Domain;
 
 namespace ForThree
 {
     public partial class Form1 : Form
     {
+
+        protected List<Team> mTeams = new List<Team>(); 
 
         public Form1()
         {
@@ -22,6 +25,11 @@ namespace ForThree
         {
             TeamWeekParser mTeamWeekInput = new TeamWeekParser(textBox1.Text);
             mTeamWeekInput.Fetch(); 
+        }
+
+        public void AddTeamToView(Team team)
+        {
+            mTeams.Add(team); 
         }
     }
 }

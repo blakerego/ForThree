@@ -26,7 +26,7 @@ namespace ForThree.Implementations
             int size = parts.Length;
             Team team = null;
 
-            if (size == 11)
+            if (size == 11 || size == 10)
             {
                 team = new Team
                 {
