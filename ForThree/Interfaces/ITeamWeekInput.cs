@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Domain;
 
 namespace ForThree.Implementations
 {
@@ -10,6 +11,6 @@ namespace ForThree.Implementations
     /// </summary>
     public interface ITeamWeekInput
     {
-        public void Fetch(); 
+        Team Fetch(); 
     }
 }
