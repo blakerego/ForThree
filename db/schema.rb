@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222035346) do
+ActiveRecord::Schema.define(:version => 20121222044258) do
 
   create_table "teams", :force => true do |t|
     t.string   "name"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(:version => 20121222035346) do
 
   create_table "weekly_stats", :force => true do |t|
     t.integer  "team_id"
-    t.integer  "week_number"
+    t.integer  "week_id"
     t.float    "field_goal_percentage"
     t.float    "free_throw_percentage"
     t.integer  "three_pointers_made"
@@ -32,6 +32,12 @@ ActiveRecord::Schema.define(:version => 20121222035346) do
     t.integer  "turnovers"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
+  end
+
+  create_table "weeks", :force => true do |t|
+    t.integer  "number"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
