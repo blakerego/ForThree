@@ -1,0 +1,2 @@
+module WeeklyStatsHelper
+end

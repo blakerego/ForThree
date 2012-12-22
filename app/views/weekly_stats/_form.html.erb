@@ -1,0 +1,49 @@
+<%= form_for(@weekly_stat) do |f| %>
+  <% if @weekly_stat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@weekly_stat.errors.count, "error") %> prohibited this weekly_stat from being saved:</h2>
+
+      <ul>
+      <% @weekly_stat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :three_pointers_made %><br />
+    <%= f.number_field :three_pointers_made %>
+  </div>
+  <div class="field">
+    <%= f.label :blocks %><br />
+    <%= f.number_field :blocks %>
+  </div>
+  <div class="field">
+    <%= f.label :field_goal_percentage %><br />
+    <%= f.text_field :field_goal_percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :free_throw_percentage %><br />
+    <%= f.text_field :free_throw_percentage %>
+  </div>
+  <div class="field">
+    <%= f.label :rebounds %><br />
+    <%= f.number_field :rebounds %>
+  </div>
+  <div class="field">
+    <%= f.label :steals %><br />
+    <%= f.number_field :steals %>
+  </div>
+  <div class="field">
+    <%= f.label :team_id %><br />
+    <%= f.number_field :team_id %>
+  </div>
+  <div class="field">
+    <%= f.label :turnovers %><br />
+    <%= f.number_field :turnovers %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

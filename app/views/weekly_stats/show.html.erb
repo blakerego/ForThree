@@ -1,0 +1,50 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Three pointers made:</b>
+  <%= @weekly_stat.three_pointers_made %>
+</p>
+
+<p>
+  <b>Blocks:</b>
+  <%= @weekly_stat.blocks %>
+</p>
+
+<p>
+  <b>Field goal percentage:</b>
+  <%= @weekly_stat.field_goal_percentage %>
+</p>
+
+<p>
+  <b>Free throw percentage:</b>
+  <%= @weekly_stat.free_throw_percentage %>
+</p>
+
+<p>
+  <b>Rebounds:</b>
+  <%= @weekly_stat.rebounds %>
+</p>
+
+<p>
+  <b>Steals:</b>
+  <%= @weekly_stat.steals %>
+</p>
+
+<p>
+  <b>Team:</b>
+  <%= @weekly_stat.team_id %>
+</p>
+
+<p>
+  <b>Turnovers:</b>
+  <%= @weekly_stat.turnovers %>
+</p>
+
+<p>
+  <b>Week number:</b>
+  <%= @weekly_stat.week_number %>
+</p>
+
+
+<%= link_to 'Edit', edit_weekly_stat_path(@weekly_stat) %> |
+<%= link_to 'Back', weekly_stats_path %>

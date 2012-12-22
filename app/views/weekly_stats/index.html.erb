@@ -1,0 +1,37 @@
+<h1>Listing weekly_stats</h1>
+
+<table>
+  <tr>
+    <th>Three pointers made</th>
+    <th>Blocks</th>
+    <th>Field goal percentage</th>
+    <th>Free throw percentage</th>
+    <th>Rebounds</th>
+    <th>Steals</th>
+    <th>Team</th>
+    <th>Turnovers</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @weekly_stats.each do |weekly_stat| %>
+  <tr>
+    <td><%= weekly_stat.three_pointers_made %></td>
+    <td><%= weekly_stat.blocks %></td>
+    <td><%= weekly_stat.field_goal_percentage %></td>
+    <td><%= weekly_stat.free_throw_percentage %></td>
+    <td><%= weekly_stat.rebounds %></td>
+    <td><%= weekly_stat.steals %></td>
+    <td><%= weekly_stat.team_id %></td>
+    <td><%= weekly_stat.turnovers %></td>
+    <td><%= link_to 'Show', weekly_stat %></td>
+    <td><%= link_to 'Edit', edit_weekly_stat_path(weekly_stat) %></td>
+    <td><%= link_to 'Destroy', weekly_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Weekly stat', new_weekly_stat_path %>
