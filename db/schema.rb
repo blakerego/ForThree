@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222044258) do
+ActiveRecord::Schema.define(:version => 20121226071901) do
 
   create_table "teams", :force => true do |t|
     t.string   "name"
@@ -32,12 +32,6 @@ ActiveRecord::Schema.define(:version => 20121222044258) do
     t.integer  "turnovers"
     t.datetime "created_at",            :null => false
     t.datetime "updated_at",            :null => false
-  end
-
-  create_table "weeks", :force => true do |t|
-    t.integer  "number"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
 end
