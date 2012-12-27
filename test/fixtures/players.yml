@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  position: MyString
+  mpg: 1
+  fg_pct: 1.5
+  ft_pct: 1.5
+  threes: 1.5
+  points: 1.5
+  rebounds: 1.5
+  assists: 1.5
+  steals: 1.5
+  blocks: 1.5
+  TO: 1.5
+
+two:
+  name: MyString
+  position: MyString
+  mpg: 1
+  fg_pct: 1.5
+  ft_pct: 1.5
+  threes: 1.5
+  points: 1.5
+  rebounds: 1.5
+  assists: 1.5
+  steals: 1.5
+  blocks: 1.5
+  TO: 1.5
