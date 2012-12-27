@@ -11,27 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226071901) do
+ActiveRecord::Schema.define(:version => 20121227002752) do
 
   create_table "teams", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string "name"
   end
 
   create_table "weekly_stats", :force => true do |t|
-    t.integer  "team_id"
-    t.integer  "week_id"
-    t.float    "field_goal_percentage"
-    t.float    "free_throw_percentage"
-    t.integer  "three_pointers_made"
-    t.integer  "rebounds"
-    t.integer  "assists"
-    t.integer  "steals"
-    t.integer  "blocks"
-    t.integer  "turnovers"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
+    t.integer "team_id"
+    t.float   "field_goal_percentage"
+    t.float   "free_throw_percentage"
+    t.integer "three_pointers_made"
+    t.integer "rebounds"
+    t.integer "assists"
+    t.integer "steals"
+    t.integer "blocks"
+    t.integer "turnovers"
+    t.integer "total_points"
+    t.integer "week_id"
   end
 
 end
