@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(:version => 20121227204108) do
 
   create_table "weekly_stats", :force => true do |t|
     t.integer "team_id"
+    t.integer "week_id"
     t.float   "field_goal_percentage"
     t.float   "free_throw_percentage"
     t.integer "three_pointers_made"

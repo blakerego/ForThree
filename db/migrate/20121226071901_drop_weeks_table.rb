@@ -4,5 +4,10 @@ class DropWeeksTable < ActiveRecord::Migration
   end
 
   def down
+  	  create_table :weeks do |t|
+      t.integer :number
+
+      t.timestamps
+  	end
   end
 end
