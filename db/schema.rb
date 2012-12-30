@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121227204108) do
+ActiveRecord::Schema.define(:version => 20121229192049) do
 
   create_table "players", :force => true do |t|
     t.string  "name"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(:version => 20121227204108) do
     t.integer "bench1_id"
     t.integer "bench2_id"
     t.integer "bench3_id"
+    t.integer "week_id"
   end
 
   create_table "weekly_stats", :force => true do |t|
