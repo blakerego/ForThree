@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121229192049) do
+ActiveRecord::Schema.define(:version => 20130102005235) do
+
+  create_table "matchups", :force => true do |t|
+    t.integer "week_number"
+    t.integer "team1_id"
+    t.integer "team2_id"
+  end
 
   create_table "players", :force => true do |t|
     t.string  "name"
@@ -43,12 +49,12 @@ ActiveRecord::Schema.define(:version => 20121229192049) do
     t.integer "bench1_id"
     t.integer "bench2_id"
     t.integer "bench3_id"
-    t.integer "week_id"
+    t.integer "week_number"
   end
 
   create_table "weekly_stats", :force => true do |t|
     t.integer "team_id"
-    t.integer "week_id"
+    t.integer "week_number"
     t.float   "field_goal_percentage"
     t.float   "free_throw_percentage"
     t.integer "three_pointers_made"
