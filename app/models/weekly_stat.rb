@@ -8,7 +8,7 @@ class WeeklyStat < ActiveRecord::Base
   attr_accessible  :rebounds
   attr_accessible  :steals
   attr_accessible  :team_id
-  attr_accessible  :week_id
+  attr_accessible  :week_number
   attr_accessible  :turnovers
   attr_accessible  :total_points
 end

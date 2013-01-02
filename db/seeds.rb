@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+# Create the teams
 team1 = Team.create(:name => 'KingJames')
 team2 = Team.create(:name => 'Gangster Clowns')
 team3 = Team.create(:name => 'The Real Beal')
@@ -24,10 +25,111 @@ team14 = Team.create(:name => 'Bosh.0')
 team15 = Team.create(:name => 'knicks2013champs')
 team16 = Team.create(:name => 'BALLER17')
 
+#Create a portion of the schedule in the matchup table
+Matchup.create(:week_number => 9,
+	:team1_id => team5.id,
+	:team2_id => team2.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team9.id,
+	:team2_id => team16.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team12.id,
+	:team2_id => team1.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team4.id,
+	:team2_id => team7.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team14.id,
+	:team2_id => team11.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team10.id,
+	:team2_id => team13.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team6.id,
+	:team2_id => team3.id)
+Matchup.create(:week_number => 9,
+	:team1_id => team15.id,
+	:team2_id => team8.id)
+
+
+Matchup.create(:week_number => 10,
+	:team1_id => team5.id,
+	:team2_id => team9.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team16.id,
+	:team2_id => team12.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team1.id,
+	:team2_id => team7.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team11.id,
+	:team2_id => team4.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team14.id,
+	:team2_id => team10.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team15.id,
+	:team2_id => team13.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team2.id,
+	:team2_id => team6.id)
+Matchup.create(:week_number => 10,
+	:team1_id => team8.id,
+	:team2_id => team3.id)
+
+Matchup.create(:week_number => 11,
+	:team1_id => team5.id,
+	:team2_id => team12.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team6.id,
+	:team2_id => team8.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team7.id,
+	:team2_id => team16.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team1.id,
+	:team2_id => team11.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team13.id,
+	:team2_id => team14.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team4.id,
+	:team2_id => team10.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team8.id,
+	:team2_id => team2.id)
+Matchup.create(:week_number => 11,
+	:team1_id => team15.id,
+	:team2_id => team3.id)
+
+Matchup.create(:week_number => 12,
+	:team1_id => team5.id,
+	:team2_id => team7.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team8.id,
+	:team2_id => team9.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team6.id,
+	:team2_id => team12.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team11.id,
+	:team2_id => team16.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team1.id,
+	:team2_id => team10.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team4.id,
+	:team2_id => team13.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team14.id,
+	:team2_id => team15.id)
+Matchup.create(:week_number => 12,
+	:team1_id => team2.id,
+	:team2_id => team3.id)
 
 WeeklyStat.create(
 	:team_id => team5.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.387,
     :free_throw_percentage => 0.815,
     :three_pointers_made => 35,
@@ -40,7 +142,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team3.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.474,
     :free_throw_percentage => 0.728,
     :three_pointers_made => 40,
@@ -53,7 +155,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team9.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.455,
     :free_throw_percentage => 0.808,
     :three_pointers_made => 24,
@@ -66,7 +168,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team1.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.478,
     :free_throw_percentage => 0.854,
     :three_pointers_made => 43,
@@ -79,7 +181,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team12.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.463,
     :free_throw_percentage => 0.851,
     :three_pointers_made => 26,
@@ -92,7 +194,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team4.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.473,
     :free_throw_percentage => 0.835,
     :three_pointers_made => 40,
@@ -105,7 +207,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team7.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.472,
     :free_throw_percentage => 0.811,
     :three_pointers_made => 10,
@@ -118,7 +220,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team14.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.44,
     :free_throw_percentage => 0.814,
     :three_pointers_made => 29,
@@ -131,7 +233,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team11.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.433,
     :free_throw_percentage => 0.673,
     :three_pointers_made => 37,
@@ -144,7 +246,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team13.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.408,
     :free_throw_percentage => 0.704,
     :three_pointers_made => 25,
@@ -157,7 +259,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team15.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.423,
     :free_throw_percentage => 0.829,
     :three_pointers_made => 25,
@@ -170,7 +272,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team16.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.538,
     :free_throw_percentage => 0.753,
     :three_pointers_made => 16,
@@ -183,7 +285,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team2.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.474,
     :free_throw_percentage => 0.786,
     :three_pointers_made => 22,
@@ -196,7 +298,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team6.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.412,
     :free_throw_percentage => 0.819,
     :three_pointers_made => 32,
@@ -209,7 +311,7 @@ WeeklyStat.create(
 
 WeeklyStat.create(
 	:team_id => team8.id,
-    :week_id => 8,
+    :week_number => 8,
     :field_goal_percentage => 0.449,
     :free_throw_percentage => 0.833,
     :three_pointers_made => 31,
