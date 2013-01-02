@@ -4,9 +4,18 @@ class WeeklyStatsController < ApplicationController
   def index
     @weekly_stats = WeeklyStat.all
 
+    puts '******************************************************'
+    puts '******************************************************'
+    puts '******************************************************'
+    puts @weekly_stats.to_json(:include => [:team])
+    puts '******************************************************'
+    puts '******************************************************'
+    puts '******************************************************'
+
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @weekly_stats }
+      format.json { render json: @weekly_stats.to_json(:include => [:team]) }
+      format.js { render json: @weekly_stats.to_json(:include => [:team]) }      
     end
   end
 
@@ -14,10 +23,10 @@ class WeeklyStatsController < ApplicationController
   # GET /weekly_stats/1.json
   def show
     @weekly_stat = WeeklyStat.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @weekly_stat }
+      format.json { render json: @weekly_stat.to_json(:include => [:team]) }
+      format.js { render :layout=>false }
     end
   end
 

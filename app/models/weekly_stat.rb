@@ -1,5 +1,5 @@
 class WeeklyStat < ActiveRecord::Base
-	belongs_to :teams
+	belongs_to :team
   attr_accessible  :three_pointers_made
   attr_accessible  :assists
   attr_accessible  :blocks
