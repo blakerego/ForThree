@@ -16,7 +16,7 @@ var WeeklyStat = Backbone.Model.extend({
 		//this.set({ 'team' : new new Team(data.team) }); 
 		return data; 
 	}
-})
+});
 
 /************************************************************************
 Collection
@@ -24,18 +24,5 @@ Collection
 var WeeklyStatList = Backbone.Collection.extend({
 	model: WeeklyStat,
 	url: "/weekly_stats"
-})
-
-var w = new WeeklyStatList(); 
-w.fetch({
-	error: function()
-	{
-		alert('an error has occurred.');
-	},
-
-	success: function()
-	{
-		alert(w.models.length); 
-	}
-}); 
+});
 

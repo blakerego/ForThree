@@ -12,3 +12,11 @@
 
 //= require_tree .//models
 //= require_tree .//views
+
+//= require_tree .//static
+
+
+_.templateSettings = {
+    interpolate: /\[\[\=(.+?)\]\]/g,
+    evaluate: /\[\[(.+?)\]\]/g
+};

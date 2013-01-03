@@ -1,3 +1,19 @@
 <h1>Team Rankings</h1>
 
-<div id='team_ranking_placeholder'></div>
+
+<table id='weekly_stat_list_placeholder' class='table'></table>
+	<script type="text/template" id="weekly_stat_template">
+		<td>[[= team.attributes.name ]]</td>
+		<td>[[= field_goal_percentage ]]</td>
+		<td>[[= free_throw_percentage ]]</td>		
+		<td>[[= three_pointers_made ]]</td>
+		<td>[[= total_points ]]</td>
+		<td>[[= rebounds ]]</td>
+		<td>[[= assists ]]</td>
+		<td>[[= steals ]]</td>
+		<td>[[= blocks ]]</td>
+		<td>[[= turnovers]]</td>
+		
+	</script>
+
+
