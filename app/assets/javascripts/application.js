@@ -6,6 +6,7 @@
 //= require underscore
 //= require backbone
 
+//= require stupidtable.min
 
 //= require application
 

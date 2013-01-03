@@ -27,11 +27,7 @@ List View
 **********************************/
 var WeeklyStatListView = Backbone.View.extend({    
 
-  el: $('#weekly_stat_list_placeholder'), // attaches `this.el` to an existing element.
-
-  tagName: 'table', 
-
-  class: 'table',
+  el: $('#weekly_stat_list_placeholder'), // assumes this is a <table> tag.
 
   initialize: function()
   {
@@ -41,7 +37,7 @@ var WeeklyStatListView = Backbone.View.extend({
 
   render: function()
   {
-    var tableEl = $('<table><thead><tr><th>Team Name</th><th>FG %</th><th>FT %</th><th>3PM</th><th>Points</th><th>Rebounds</th><th>Assists</th><th>Steals</th><th>Blocks</th><th>TO</th></tr></table>');
+    var tableEl = $('<table><thead><tr><th data-sort="string">Team Name</th><th data-sort="float">FG %</th><th data-sort="float">FT %</th><th data-sort="int">3PM</th><th data-sort="int">Points</th><th data-sort="int">Rebounds</th><th data-sort="int">Assists</th><th data-sort="int">Steals</th><th data-sort="int">Blocks</th><th data-sort="int">TO</th></tr></table>');
     var tbodyEl = $('<tbody />')
     tableEl.append(tbodyEl);
     if (typeof this.collection != 'undefined' )
@@ -59,6 +55,7 @@ var WeeklyStatListView = Backbone.View.extend({
         //$(this.el).append(this.getView(items[current++]).render().el.outerHTML);   
       }
       this.$el.append(tableEl.children());
+      this.$el.stupidtable(); 
     }
     
   },
