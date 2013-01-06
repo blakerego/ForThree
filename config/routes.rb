@@ -4,6 +4,6 @@ ForThree::Application.routes.draw do
   resources :weekly_stats
   resources :teams
   match ':action' => 'static#:action'
-  root :to => 'weekly_stats#index'
+  root :to => 'static#ranks'
 
 end

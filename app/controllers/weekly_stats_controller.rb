@@ -49,7 +49,24 @@ class WeeklyStatsController < ApplicationController
   # POST /weekly_stats
   # POST /weekly_stats.json
   def create
+
+    puts '******************** Creating Weekly Stats ***************************'
+    puts params[:team]
+    
+    teamName = params[:team][:name]
+    puts(teamName)
+
+    team = Team.find_by_name(teamName)
+
     @weekly_stat = WeeklyStat.new(params[:weekly_stat])
+    
+    if team.nil? && !teamName.nil?
+      team = Team.create(:name => teamName)
+    end
+
+    @weekly_stat.team = team
+
+
 
     respond_to do |format|
       if @weekly_stat.save
@@ -61,6 +78,7 @@ class WeeklyStatsController < ApplicationController
       end
     end
   end
+
 
   # PUT /weekly_stats/1
   # PUT /weekly_stats/1.json
