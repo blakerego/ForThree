@@ -44,6 +44,7 @@ $('#add_research_button').click(function()
 		steals : array[7], 
 		blocks : array[8], 
 		turnovers : array[9], 
+		week_number : $('#week_number').val(),
 		
 		team : new Team({ 
 			name : array[0] 
