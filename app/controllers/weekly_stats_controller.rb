@@ -2,14 +2,19 @@ class WeeklyStatsController < ApplicationController
   # GET /weekly_stats
   # GET /weekly_stats.json
   def index
-    @weekly_stats = WeeklyStat.all
+
+    week_number = params[:week_number]
+
+    if week_number.nil?
+      @weekly_stats = WeeklyStat.all
+    else 
+      @weekly_stats = WeeklyStat.find_all_by_week_number(week_number)
+    end
+
+    puts @weekly_stats.size
 
     puts '******************************************************'
-    puts '******************************************************'
-    puts '******************************************************'
     puts @weekly_stats.to_json(:include => [:team])
-    puts '******************************************************'
-    puts '******************************************************'
     puts '******************************************************'
 
     respond_to do |format|

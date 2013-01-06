@@ -15,7 +15,7 @@
 //= require_tree .//views
 
 //= require_tree .//static
-
+//= require weeks
 
 _.templateSettings = {
     interpolate: /\[\[\=(.+?)\]\]/g,

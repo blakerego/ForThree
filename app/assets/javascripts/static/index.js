@@ -8,7 +8,9 @@ var renderPage = function()
 	i++; 
 	console.log("number of renders: " + i); 
 	view = null;
-	var w = new WeeklyStatList(); 
+	var w = new WeeklyStatList( {
+		week_number : $('#week_number').val()
+		}); 
 	w.fetch({
 		error: function()
 		{

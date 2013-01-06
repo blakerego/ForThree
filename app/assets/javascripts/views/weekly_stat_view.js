@@ -5,8 +5,6 @@ var WeeklyStatView = Backbone.View.extend({
   
   tagName: "tr",
 
-  //className: "",
-
   template: _.template($('#weekly_stat_template').html()),
 
   initialize: function() 
@@ -55,9 +53,7 @@ var WeeklyStatListView = Backbone.View.extend({
         var row = new WeeklyStatView( { model: items[current++], el: $('<tr />') });
         row.render();
         tbodyEl.append(row.$el);
-        //$(this.el).append(this.getView(items[current++]).render().el.outerHTML);   
       }
-      //this.$el.append(this.tableEl.children());
       this.$el.append(this.tableEl); 
       this.tableEl.stupidtable(); 
     }

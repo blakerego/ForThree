@@ -1,10 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Number:</b>
-  <%= @week.number %>
-</p>
+<h1>Week <%= @week %></h1>
+
+<input type="hidden" value="<%= @week %>" id="week_number"/>
+
+<div id='weekly_stat_list_placeholder'></div>
+
+<div class="well">
+	<legend>Add Research Here:</legend>
+	<input id="research_input" type="text" placeholder="[Team Name] [FG%] [FT%] [3PTM] [PTS] [REB] [AST] [ST] [BLK] [TO]" style="width: 600px">
+	<button id="add_research_button" class="btn btn-large" href="#myModal">Add data</button>
+</div>
+
+	<script type="text/template" id="weekly_stat_template">
+		<td>[[= team.attributes.name ]]</td>
+		<td>[[= field_goal_percentage ]]</td>
+		<td>[[= free_throw_percentage ]]</td>		
+		<td>[[= three_pointers_made ]]</td>
+		<td>[[= total_points ]]</td>
+		<td>[[= rebounds ]]</td>
+		<td>[[= assists ]]</td>
+		<td>[[= steals ]]</td>
+		<td>[[= blocks ]]</td>
+		<td>[[= turnovers]]</td>
+	</script>
 
 
-<%= link_to 'Edit', edit_week_path(@week) %> |
 <%= link_to 'Back', weeks_path %>
