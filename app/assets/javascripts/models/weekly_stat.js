@@ -10,10 +10,6 @@ var WeeklyStat = Backbone.Model.extend({
 		this.set({ 'team' : new Team(this.get('team')) })
 	},
 	parse: function(data) {
-		//alert(Object.keys(data));
-		//alert(data.team.name);
- 
-		//this.set({ 'team' : new new Team(data.team) }); 
 		return data; 
 	}
 });

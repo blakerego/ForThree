@@ -1,22 +1,32 @@
 
+var view = null;
+var i = 0; 
+var j = 0; 
 
-var w = new WeeklyStatList(); 
-w.fetch({
-	error: function()
-	{
-		alert('an error has occurred.');
-	},
+var renderPage = function()
+{
+	i++; 
+	console.log("number of renders: " + i); 
+	view = null;
+	var w = new WeeklyStatList(); 
+	w.fetch({
+		error: function()
+		{
+			alert('an error has occurred.');
+		},
 
-	success: function()
-	{
-		var view = new WeeklyStatListView({
-			collection : w
-		});
-		view.render();
+		success: function()
+		{
+			j++; 
+			console.log("number of successes: " + j); 
+			view = new WeeklyStatListView({
+				collection : w
+			});
+			view.render();
 
-	}
-}); 
-
+		}
+	}); 
+}
 
 $('#add_research_button').click(function()
 {
@@ -39,5 +49,8 @@ $('#add_research_button').click(function()
 	});
 
 	ws.save(); 
-
+	view.clear(); 
+	renderPage(); 
 });
+
+renderPage(); 

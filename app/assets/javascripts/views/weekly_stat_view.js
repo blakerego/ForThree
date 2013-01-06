@@ -35,11 +35,14 @@ var WeeklyStatListView = Backbone.View.extend({
     this.el =  $('#weekly_stat_list_placeholder'); 
   },
 
+  
+  tableEl : null, 
+
   render: function()
   {
-    var tableEl = $('<table><thead><tr><th data-sort="string">Team Name</th><th data-sort="float">FG %</th><th data-sort="float">FT %</th><th data-sort="int">3PM</th><th data-sort="int">Points</th><th data-sort="int">Rebounds</th><th data-sort="int">Assists</th><th data-sort="int">Steals</th><th data-sort="int">Blocks</th><th data-sort="int">TO</th></tr></table>');
+    this.tableEl = $('<table class="table table-striped table-hover table-condensed"><thead><tr><th data-sort="string">Team Name</th><th data-sort="float">FG %</th><th data-sort="float">FT %</th><th data-sort="int">3PM</th><th data-sort="int">Points</th><th data-sort="int">Rebounds</th><th data-sort="int">Assists</th><th data-sort="int">Steals</th><th data-sort="int">Blocks</th><th data-sort="int">TO</th></tr></table>');
     var tbodyEl = $('<tbody />')
-    tableEl.append(tbodyEl);
+    this.tableEl.append(tbodyEl);
     if (typeof this.collection != 'undefined' )
     {
 
@@ -54,8 +57,9 @@ var WeeklyStatListView = Backbone.View.extend({
         tbodyEl.append(row.$el);
         //$(this.el).append(this.getView(items[current++]).render().el.outerHTML);   
       }
-      this.$el.append(tableEl.children());
-      this.$el.stupidtable(); 
+      //this.$el.append(this.tableEl.children());
+      this.$el.append(this.tableEl); 
+      this.tableEl.stupidtable(); 
     }
     
   },
@@ -65,6 +69,11 @@ var WeeklyStatListView = Backbone.View.extend({
     return new WeeklyStatView({
       model: item, 
     });
+  }, 
+
+  clear: function() 
+  {
+    this.tableEl.remove();     
   }
 
 });
