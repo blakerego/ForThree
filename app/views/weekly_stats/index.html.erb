@@ -10,7 +10,7 @@
     <th>Steals</th>
     <th>Team</th>
     <th>Turnovers</th>
-    <th></th>
+    <th>Week Number</th>
     <th></th>
     <th></th>
   </tr>
@@ -25,6 +25,7 @@
     <td><%= weekly_stat.steals %></td>
     <td><%= weekly_stat.team_id %></td>
     <td><%= weekly_stat.turnovers %></td>
+    <td><%= weekly_stat.week_number %></td>
     <td><%= link_to 'Show', weekly_stat %></td>
     <td><%= link_to 'Edit', edit_weekly_stat_path(weekly_stat) %></td>
     <td><%= link_to 'Destroy', weekly_stat, method: :delete, data: { confirm: 'Are you sure?' } %></td>

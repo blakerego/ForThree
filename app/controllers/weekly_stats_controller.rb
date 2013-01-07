@@ -2,11 +2,25 @@ class WeeklyStatsController < ApplicationController
   # GET /weekly_stats
   # GET /weekly_stats.json
   def index
-    @weekly_stats = WeeklyStat.all
+
+    week_number = params[:week_number]
+
+    if week_number.nil?
+      @weekly_stats = WeeklyStat.all
+    else 
+      @weekly_stats = WeeklyStat.find_all_by_week_number(week_number)
+    end
+
+    puts @weekly_stats.size
+
+    puts '******************************************************'
+    puts @weekly_stats.to_json(:include => [:team])
+    puts '******************************************************'
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @weekly_stats }
+      format.json { render json: @weekly_stats.to_json(:include => [:team]) }
+      format.js { render json: @weekly_stats.to_json(:include => [:team]) }      
     end
   end
 
@@ -14,10 +28,10 @@ class WeeklyStatsController < ApplicationController
   # GET /weekly_stats/1.json
   def show
     @weekly_stat = WeeklyStat.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @weekly_stat }
+      format.json { render json: @weekly_stat.to_json(:include => [:team]) }
+      format.js { render :layout=>false }
     end
   end
 
@@ -40,7 +54,24 @@ class WeeklyStatsController < ApplicationController
   # POST /weekly_stats
   # POST /weekly_stats.json
   def create
+
+    puts '******************** Creating Weekly Stats ***************************'
+    puts params[:team]
+    
+    teamName = params[:team][:name]
+    puts(teamName)
+
+    team = Team.find_by_name(teamName)
+
     @weekly_stat = WeeklyStat.new(params[:weekly_stat])
+    
+    if team.nil? && !teamName.nil?
+      team = Team.create(:name => teamName)
+    end
+
+    @weekly_stat.team = team
+
+
 
     respond_to do |format|
       if @weekly_stat.save
@@ -52,6 +83,7 @@ class WeeklyStatsController < ApplicationController
       end
     end
   end
+
 
   # PUT /weekly_stats/1
   # PUT /weekly_stats/1.json
