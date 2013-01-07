@@ -8,22 +8,22 @@ development:
   encoding: unicode
   database: for_three_db
   pool: 5
-  username: blakerego
-  password: blakerego
+  username: postgres
+  password: charley
 
 test:
   adapter: postgresql
   encoding: unicode
   database: for_three_db_test
   pool: 5
-  username: blakerego
-  password: blakerego
+  username: postgres
+  password: charley
 
 production:
   adapter: postgresql
   encoding: unicode
   database: for_three_db
   pool: 5
-  username: brego
-  password: 
+  username: postgres
+  password: charley
 

@@ -11,33 +11,59 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121222044258) do
+ActiveRecord::Schema.define(:version => 20130102005235) do
+
+  create_table "matchups", :force => true do |t|
+    t.integer "week_number"
+    t.integer "team1_id"
+    t.integer "team2_id"
+  end
+
+  create_table "players", :force => true do |t|
+    t.string  "name"
+    t.string  "position"
+    t.integer "mpg"
+    t.float   "fg_pct"
+    t.float   "ft_pct"
+    t.float   "threes"
+    t.float   "points"
+    t.float   "rebounds"
+    t.float   "assists"
+    t.float   "steals"
+    t.float   "blocks"
+    t.float   "TO"
+  end
 
   create_table "teams", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string  "name"
+    t.integer "point_guard_id"
+    t.integer "shooting_guard_id"
+    t.integer "guard_id"
+    t.integer "power_forward_id"
+    t.integer "small_forward_id"
+    t.integer "forward_id"
+    t.integer "center1_id"
+    t.integer "center2_id"
+    t.integer "util1_id"
+    t.integer "util2_id"
+    t.integer "bench1_id"
+    t.integer "bench2_id"
+    t.integer "bench3_id"
+    t.integer "week_number"
   end
 
   create_table "weekly_stats", :force => true do |t|
-    t.integer  "team_id"
-    t.integer  "week_id"
-    t.float    "field_goal_percentage"
-    t.float    "free_throw_percentage"
-    t.integer  "three_pointers_made"
-    t.integer  "rebounds"
-    t.integer  "assists"
-    t.integer  "steals"
-    t.integer  "blocks"
-    t.integer  "turnovers"
-    t.datetime "created_at",            :null => false
-    t.datetime "updated_at",            :null => false
-  end
-
-  create_table "weeks", :force => true do |t|
-    t.integer  "number"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "team_id"
+    t.integer "week_number"
+    t.float   "field_goal_percentage"
+    t.float   "free_throw_percentage"
+    t.integer "three_pointers_made"
+    t.integer "rebounds"
+    t.integer "assists"
+    t.integer "steals"
+    t.integer "blocks"
+    t.integer "turnovers"
+    t.integer "total_points"
   end
 
 end
