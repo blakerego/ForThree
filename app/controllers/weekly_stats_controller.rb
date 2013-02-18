@@ -67,6 +67,7 @@ class WeeklyStatsController < ApplicationController
       team = Team.create(:name => teamName)
     end
 
+    puts 'TEAM: ' + team.id.to_s
 
     #@weekly_stat = WeeklyStat.new(params[:weekly_stat])
 
@@ -78,14 +79,12 @@ class WeeklyStatsController < ApplicationController
     if (@weekly_stat.nil?)
       puts '############# No existing stat found :( ###############################'            
       @weekly_stat = WeeklyStat.new(params[:weekly_stat])
+      @weekly_stat.team = team
       updateSuccessful = @weekly_stat.save
     else 
       puts '############# FOUND EXISTING STAT RECORD ###############################'   
       updateSuccessful = @weekly_stat.update_attributes(params[:weekly_stat])   
     end
-    
-    @weekly_stat.team = team
-
 
 
     respond_to do |format|
