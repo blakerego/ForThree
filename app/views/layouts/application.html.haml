@@ -6,7 +6,17 @@
     = stylesheet_link_tag "application", :media => "all"
     #{csrf_meta_tags}
   
-  %body
+  %body{ "data-spy" => "scroll" }
+    .navbar
+      .navbar-inner
+        %a.brand{:href => "#"} For Three
+        %ul.nav
+          %li
+            %a{:href => "#{weeks_path}"} Weeks
+          %li 
+            %a{:href => "#{teams_path}"} Teams
+          %li
+            %a{:href => "#"} Matchup
     = yield
 
   = javascript_include_tag "application"

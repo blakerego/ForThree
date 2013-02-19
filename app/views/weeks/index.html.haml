@@ -1,10 +1,12 @@
 
-%h1 Choose a week
+.hero-unit
+  %h1 
+    Select a week
 
-.dropdown
-  %a{:class => "dropdown-toggle btn btn-large", :id => "dLabel", :role => "button", "data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
-    Select a Week
-    %b.caret
-  %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "dLabel"}
-    - (1..26).each do |week|
-      %a{:href => "weeks/#{week}"} Week #{week}
+    .dropdown
+      %a{:class => "dropdown-toggle btn btn-primary btn-large", :id => "dLabel", :role => "button", "data-toggle" => "dropdown", "data-target" => "#", :href => "#"}
+        Select a Week
+        %b.caret
+      %ul.dropdown-menu{:role => "menu", "aria-labelledby" => "dLabel"}
+        - (1..26).each do |week|
+          %a{:href => "weeks/#{week}"} Week #{week}
