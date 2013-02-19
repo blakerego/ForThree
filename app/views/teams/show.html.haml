@@ -1,14 +1,12 @@
 %p#notice #{notice}
 
 
-%p
-  %b Name:
-  #{ @team.name }
+.hero-unit
+  %h1 #{ @team.name }
+  = link_to 'Back to All Teams', teams_path , :class => 'btn'
 
-= link_to 'Edit', edit_team_path(@team) 
-| 
-= link_to 'Back', teams_path 
-
+/ %label 
+/   %input{:type => "checkbox"} Sort values
 
 %br
 
@@ -45,8 +43,6 @@
     right: 10px;
   }
 
-%label 
-  %input{:type => "checkbox"} Sort values
 
 
 
