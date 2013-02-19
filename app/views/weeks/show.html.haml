@@ -25,3 +25,9 @@
 
 
 = link_to 'Back', weeks_path
+
+
+= content_for :page_js do 
+	:javascript
+		loadWeeklyStatViews(); 
+		renderPage(); 
