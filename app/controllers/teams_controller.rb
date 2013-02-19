@@ -15,6 +15,41 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
 
+    @teamWeeklyStats = WeeklyStat.find_all_by_team_id(@team.id)
+
+    @assists = []
+    @blocks = []
+    @field_goal_percentage = []
+    @free_throw_percentage = []
+    @rebounds = []
+    @steals = []
+    @three_pointers_made = []
+    @total_points = []
+    @turnovers = []
+
+
+    @teamWeeklyStats.each do |stat|
+      @assists.push({:week_number => stat.week_number, :assists => stat.assists})
+      @blocks.push({:week_number => stat.week_number, :blocks => stat.blocks })
+      @field_goal_percentage.push({:week_number => stat.week_number, :field_goal_percentage => stat.field_goal_percentage})
+      @free_throw_percentage.push({:week_number => stat.week_number, :free_throw_percentage => stat.free_throw_percentage})
+      @rebounds.push({:week_number => stat.week_number, :rebounds => stat.rebounds })
+      @steals.push({:week_number => stat.week_number, :steals => stat.steals})
+      @three_pointers_made.push({:week_number => stat.week_number, :three_pointers_made => stat.three_pointers_made})
+      @total_points.push({:week_number => stat.week_number, :total_points => stat.total_points})
+      @turnovers.push({:week_number => stat.turnovers, :turnovers => stat.turnovers})
+    end
+
+    @assists = @assists.to_json
+    @blocks = @blocks.to_json
+    @field_goal_percentage = @field_goal_percentage.to_json
+    @free_throw_percentage = @free_throw_percentage.to_json
+    @rebounds = @rebounds.to_json
+    @steals = @steals.to_json
+    @three_pointers_made = @three_pointers_made.to_json
+    @total_points = @total_points.to_json
+    @turnovers = @turnovers.to_json
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
