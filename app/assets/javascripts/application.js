@@ -16,6 +16,8 @@
 
 //= require_tree .//static
 //= require weeks
+//= require d3.v3.min
+//= require barGraph
 
 _.templateSettings = {
     interpolate: /\[\[\=(.+?)\]\]/g,
