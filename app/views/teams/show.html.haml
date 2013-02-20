@@ -3,7 +3,7 @@
 
 
 
-.hero-unit
+.hero-unit.span12
   %h1 #{ @team.name }
   = link_to 'Back to All Teams', teams_path , :class => 'btn'
 
@@ -11,37 +11,37 @@
 .span3
   %ul.nav.nav-stacked
     %li
-      %a.btn.btn-large.btn-primary#assists_button
+      %a.btn.btn-large.btn-primary.btn-stat#assists_mode
         Assists
     %li
-      %a.btn.btn-large.btn-primary#blocks_button
+      %a.btn.btn-large.btn-primary.btn-stat#blocks_mode
         Blocks
     %li
-      %a.btn.btn-large.btn-primary#points_button
+      %a.btn.btn-large.btn-primary.btn-stat#points_mode
         Points 
     %li
-      %a.btn.btn-large.btn-primary#fg_p_button
+      %a.btn.btn-large.btn-primary.btn-stat#fg_p_mode
         FG Percentage (%)
     %li
-      %a.btn.btn-large.btn-primary#fg_p_button
+      %a.btn.btn-large.btn-primary.btn-stat#ft_p_mode
         FT Percentage (%)
     %li
-      %a.btn.btn-large.btn-primary#turnovers
+      %a.btn.btn-large.btn-primary.btn-stat#turnovers_mode
         Turnovers
     %li
-      %a.btn.btn-large.btn-primary#steals
+      %a.btn.btn-large.btn-primary.btn-stat#steals_mode
         Steals
     %li
-      %a.btn.btn-large.btn-primary#3pm
+      %a.btn.btn-large.btn-primary.btn-stat#3pm_mode
         Three Pointers
     %li
-      %a.btn.btn-large.btn-primary#rebounds
+      %a.btn.btn-large.btn-primary.btn-stat#rebounds_mode
         Rebounds
 
 
-.span9#teamStatRow
-
-
+.span9
+  #teamStatRow
+  
 
   / %label 
   /   %input{:type => "checkbox"} Sort values
@@ -86,19 +86,17 @@
 
   = content_for :page_js do 
     :javascript
-      graph(JSON.parse('#{raw @assists}'), 'Assists'); 
-      graph(JSON.parse('#{raw @rebounds}'), 'Rebounds');
-      graph(JSON.parse('#{raw @blocks}'), 'Blocks');
+      setAssists(JSON.parse('#{raw @assists}'));
+      setBlocks(JSON.parse('#{raw @blocks}'));
+      setFGP(JSON.parse('#{raw @field_goal_percentage}'));
+      setFTP(JSON.parse('#{@free_throw_percentage}'));
+      setRebounds(JSON.parse('#{@rebounds}'));
+      setSteals(JSON.parse('#{@steals}'));
+      set3PM(JSON.parse('#{@three_pointers_made}'));
+      setPoints(JSON.parse('#{@total_points}'));
+      setTurnovers(JSON.parse(' #{@turnovers} '));
 
-  / ********** Available Data: *****************
-  /#{@assists}
-  /#{@blocks}
-  /#{@field_goal_percentage}
-  /#{@free_throw_percentage}
-  /#{@rebounds}
-  /#{@steals}
-  /#{@three_pointers_made}
-  /#{@total_points} 
-  / #{@turnovers} 
+      graph(JSON.parse('#{raw @assists}'), 'Assists'); 
+
 
 
