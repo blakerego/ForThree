@@ -15,7 +15,7 @@ class TeamsController < ApplicationController
   def show
     @team = Team.find(params[:id])
 
-    @teamWeeklyStats = WeeklyStat.find_all_by_team_id(@team.id)
+    @teamWeeklyStats = WeeklyStat.find_all_by_team_id(@team.id, :order => 'week_number ASC')
 
     @assists = []
     @blocks = []
