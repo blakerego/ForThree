@@ -10,6 +10,7 @@
 .well
 	%legend Add Research Here:
 	%input#research_input{:type => "text", :placeholder => "[Team Name] [FG%] [FT%] [3PTM] [PTS] [REB] [AST] [ST] [BLK] [TO]", :style => "width: 600px"}
+	%button#add_research_button.btn.btn-large{:href => "#myModal"} Add data
 
 %script{:type => "text/template", :id => "weekly_stat_template"}
 	%td [[= team.attributes.name ]]

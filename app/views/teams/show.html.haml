@@ -1,71 +1,104 @@
 %p#notice #{notice}
 
 
+
+
 .hero-unit
   %h1 #{ @team.name }
   = link_to 'Back to All Teams', teams_path , :class => 'btn'
 
-/ %label 
-/   %input{:type => "checkbox"} Sort values
 
-%br
+.span3
+  %ul.nav.nav-stacked
+    %li
+      %a.btn.btn-large.btn-primary#assists_button
+        Assists
+    %li
+      %a.btn.btn-large.btn-primary#blocks_button
+        Blocks
+    %li
+      %a.btn.btn-large.btn-primary#points_button
+        Points 
+    %li
+      %a.btn.btn-large.btn-primary#fg_p_button
+        FG Percentage (%)
+    %li
+      %a.btn.btn-large.btn-primary#fg_p_button
+        FT Percentage (%)
+    %li
+      %a.btn.btn-large.btn-primary#turnovers
+        Turnovers
+    %li
+      %a.btn.btn-large.btn-primary#steals
+        Steals
+    %li
+      %a.btn.btn-large.btn-primary#3pm
+        Three Pointers
+    %li
+      %a.btn.btn-large.btn-primary#rebounds
+        Rebounds
 
-:css
-  body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    position: relative;
-    width: 960px;
-  }
 
-  .axis text {
-    font: 10px sans-serif;
-  }
-
-  .axis path,
-  .axis line {
-    fill: none;
-    stroke: #000;
-    shape-rendering: crispEdges;
-  }
-
-  .bar {
-    fill: steelblue;
-    fill-opacity: .9;
-  }
-
-  .x.axis path {
-    display: none;
-  }
-
-  label {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-  }
+.span9#teamStatRow
 
 
 
+  / %label 
+  /   %input{:type => "checkbox"} Sort values
 
-= content_for :page_js do 
-  :javascript
-    //= require barGraph
-    var sortTimeout = setTimeout(function() {
-      d3.select("input").property("checked", true).each(change);
-    }, 2000);
+  %br
 
-    graph(JSON.parse('#{raw @assists}'), 'Assists'); 
-    graph(JSON.parse('#{raw @rebounds}'), 'Rebounds');
-    graph(JSON.parse('#{raw @blocks}'), 'Blocks');
+  :css
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      position: relative;
+      width: 960px;
+    }
 
-/ ********** Available Data: *****************
-/#{@assists}
-/#{@blocks}
-/#{@field_goal_percentage}
-/#{@free_throw_percentage}
-/#{@rebounds}
-/#{@steals}
-/#{@three_pointers_made}
-/#{@total_points} 
-/ #{@turnovers} 
+    .axis text {
+      font: 10px sans-serif;
+    }
+
+    .axis path,
+    .axis line {
+      fill: none;
+      stroke: #000;
+      shape-rendering: crispEdges;
+    }
+
+    .bar {
+      fill: steelblue;
+      fill-opacity: .9;
+    }
+
+    .x.axis path {
+      display: none;
+    }
+
+    label {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+
+
+
+  = content_for :page_js do 
+    :javascript
+      graph(JSON.parse('#{raw @assists}'), 'Assists'); 
+      graph(JSON.parse('#{raw @rebounds}'), 'Rebounds');
+      graph(JSON.parse('#{raw @blocks}'), 'Blocks');
+
+  / ********** Available Data: *****************
+  /#{@assists}
+  /#{@blocks}
+  /#{@field_goal_percentage}
+  /#{@free_throw_percentage}
+  /#{@rebounds}
+  /#{@steals}
+  /#{@three_pointers_made}
+  /#{@total_points} 
+  / #{@turnovers} 
 
 

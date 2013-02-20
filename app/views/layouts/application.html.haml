@@ -7,7 +7,7 @@
     #{csrf_meta_tags}
   
   %body{ "data-spy" => "scroll" }
-    .navbar
+    .navbar.navbar-inverse.navbar-fixed-top
       .navbar-inner
         %a.brand{:href => "#"} For Three
         %ul.nav
@@ -17,7 +17,12 @@
             %a{:href => "#{teams_path}"} Teams
           %li
             %a{:href => "#"} Matchup
-    = yield
+
+    .container
+      .row
+        %br 
+        %br
+        = yield
 
   = javascript_include_tag "application"
   = yield :page_js

@@ -33,7 +33,7 @@ function graph(externalData, yAxisLabel)
       .orient("left")
       //.tickFormat(formatPercent);
 
-  svg = d3.select("body").append("svg")
+  svg = d3.select("#teamStatRow").append("svg")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.top + margin.bottom)
     .append("g")

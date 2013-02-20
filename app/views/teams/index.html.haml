@@ -1,10 +1,14 @@
-%h1 All Teams
+.span3.bs-docs-sidebar
+
+.span9
+
+  %h1 All Teams
 
 
-/%ul.nav.nav-pills.nav-stacked
-%ul.nav.nav-list
-  = @teams.each do |team| 
-    %li 
-      = link_to team.name, team
+  /%ul.nav.nav-pills.nav-stacked
+  %ul.nav.nav-list
+    = @teams.each do |team| 
+      %li 
+        = link_to team.name, team
 
 
