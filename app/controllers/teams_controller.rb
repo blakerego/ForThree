@@ -17,6 +17,16 @@ class TeamsController < ApplicationController
 
     @teamWeeklyStats = WeeklyStat.find_all_by_team_id(@team.id, :order => 'week_number ASC')
 
+    @leagueAssistAvgs = WeeklyStat.average(:assists, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leagueBlocksAvgs = WeeklyStat.average(:blocks, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leagueFGPAvgs = WeeklyStat.average(:field_goal_percentage, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leagueFTPAvgs = WeeklyStat.average(:free_throw_percentage, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leagueReboundsAvgs = WeeklyStat.average(:rebounds, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leagueStealsAvgs = WeeklyStat.average(:steals, :group => :week_number, :order => 'week_number ASC').to_json;
+    @league3PMAvgs = WeeklyStat.average(:three_pointers_made, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leaguePointsAvgs = WeeklyStat.average(:total_points, :group => :week_number, :order => 'week_number ASC').to_json;
+    @leagueTurnoversAvgs = WeeklyStat.average(:turnovers, :group => :week_number, :order => 'week_number ASC').to_json;
+
     @assists = []
     @blocks = []
     @field_goal_percentage = []
