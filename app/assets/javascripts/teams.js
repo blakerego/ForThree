@@ -1,6 +1,6 @@
 
 
-var currentMode = assists_mode; 
+var currentMode = 'assists_mode'; 
 
 var assistsData = null; 
 var blocksData = null; 

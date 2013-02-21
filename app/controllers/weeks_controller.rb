@@ -14,6 +14,8 @@ class WeeksController < ApplicationController
   def show
     @week = params[:id]
 
+    @weekStats = WeeklyStat.find_all_by_week_number(params[:id])
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @week }

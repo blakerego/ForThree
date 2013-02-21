@@ -20,6 +20,7 @@
 //= require barGraph
 //= require teams
 
+//= require box
 
 _.templateSettings = {
     interpolate: /\[\[\=(.+?)\]\]/g,
