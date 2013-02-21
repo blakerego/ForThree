@@ -13,20 +13,6 @@ class TeamsController < ApplicationController
   # GET /teams/1
   # GET /teams/1.json
   def show
-    @team = Team.find(params[:id])
-
-    @teamWeeklyStats = WeeklyStat.find_all_by_team_id(@team.id, :order => 'week_number ASC')
-
-    @leagueAssistAvgs = WeeklyStat.average(:assists, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leagueBlocksAvgs = WeeklyStat.average(:blocks, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leagueFGPAvgs = WeeklyStat.average(:field_goal_percentage, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leagueFTPAvgs = WeeklyStat.average(:free_throw_percentage, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leagueReboundsAvgs = WeeklyStat.average(:rebounds, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leagueStealsAvgs = WeeklyStat.average(:steals, :group => :week_number, :order => 'week_number ASC').to_json;
-    @league3PMAvgs = WeeklyStat.average(:three_pointers_made, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leaguePointsAvgs = WeeklyStat.average(:total_points, :group => :week_number, :order => 'week_number ASC').to_json;
-    @leagueTurnoversAvgs = WeeklyStat.average(:turnovers, :group => :week_number, :order => 'week_number ASC').to_json;
-
     @assists = []
     @blocks = []
     @field_goal_percentage = []
@@ -38,6 +24,12 @@ class TeamsController < ApplicationController
     @turnovers = []
 
 
+
+    @team = Team.find(params[:id])
+
+    @teamWeeklyStats = WeeklyStat.find_all_by_team_id(@team.id, :order => 'week_number ASC')
+
+    ####################### Generating Numbers Relating to the Team #################################
     @teamWeeklyStats.each do |stat|
       @assists.push({:week_number => stat.week_number, :value => stat.assists})
       @blocks.push({:week_number => stat.week_number, :value => stat.blocks })
@@ -60,9 +52,33 @@ class TeamsController < ApplicationController
     @total_points = @total_points.to_json
     @turnovers = @turnovers.to_json
 
+
+    ####################### Generating League Averages #################################################
+
+    @leagueAssistAvgs = GetArrayFromQuery(WeeklyStat.average(:assists, :group => :week_number, :order => 'week_number ASC'));
+    @leagueBlocksAvgs = GetArrayFromQuery(WeeklyStat.average(:blocks, :group => :week_number, :order => 'week_number ASC'));
+    @leagueFGPAvgs = GetArrayFromQuery(WeeklyStat.average(:field_goal_percentage, :group => :week_number, :order => 'week_number ASC'));
+    @leagueFTPAvgs = GetArrayFromQuery(WeeklyStat.average(:free_throw_percentage, :group => :week_number, :order => 'week_number ASC'));
+    @leagueReboundsAvgs = GetArrayFromQuery(WeeklyStat.average(:rebounds, :group => :week_number, :order => 'week_number ASC'));
+    @leagueStealsAvgs = GetArrayFromQuery(WeeklyStat.average(:steals, :group => :week_number, :order => 'week_number ASC'));
+    @league3PMAvgs =GetArrayFromQuery(WeeklyStat.average(:three_pointers_made, :group => :week_number, :order => 'week_number ASC'));
+    @leaguePointsAvgs = GetArrayFromQuery(WeeklyStat.average(:total_points, :group => :week_number, :order => 'week_number ASC'));
+    @leagueTurnoversAvgs = GetArrayFromQuery(WeeklyStat.average(:turnovers, :group => :week_number, :order => 'week_number ASC'));
+
+    ####### Merge Team Assists and League Averages into a single hash. ###############################
+    ## use as reference: http://www.ruby-doc.org/core-1.9.3/Hash.html#method-i-merge
+    #@leagueAssistAvgs = @leagueAssistAvgs.merge(@assists)
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @team }
+    end
+  end
+
+  def GetArrayFromQuery(collection)
+    result = []
+    collection.each do |week_number, value|
+      result.push({:week_number => week_number, :value => value})
     end
   end
 

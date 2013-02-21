@@ -1,0 +1,2 @@
+module YahooReceiverHelper
+end
