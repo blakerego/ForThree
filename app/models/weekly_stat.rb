@@ -11,4 +11,6 @@ class WeeklyStat < ActiveRecord::Base
   attr_accessible  :week_number
   attr_accessible  :turnovers
   attr_accessible  :total_points
+
+  validates :team_id, { :presence => true }  
 end

@@ -56,4 +56,3 @@ $('#add_research_button').click(function()
 	renderPage(); 
 });
 
-renderPage(); 

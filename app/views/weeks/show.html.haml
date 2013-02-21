@@ -1,0 +1,34 @@
+%p#notice #{notice}
+
+%h1 Week  #{@week}
+
+
+%input{ :type => "hidden", :value => "#{@week}", :id => "week_number"}
+
+#weekly_stat_list_placeholder
+
+.well
+	%legend Add Research Here:
+	%input#research_input{:type => "text", :placeholder => "[Team Name] [FG%] [FT%] [3PTM] [PTS] [REB] [AST] [ST] [BLK] [TO]", :style => "width: 600px"}
+	%button#add_research_button.btn.btn-large{:href => "#myModal"} Add data
+
+%script{:type => "text/template", :id => "weekly_stat_template"}
+	%td [[= team.attributes.name ]]
+	%td [[= field_goal_percentage ]]
+	%td [[= free_throw_percentage ]]		
+	%td [[= three_pointers_made ]]
+	%td [[= total_points ]] 
+	%td [[= rebounds ]] 
+	%td [[= assists ]]
+	%td [[= steals ]] 
+	%td [[= blocks ]]
+	%td [[= turnovers]]
+
+
+= link_to 'Back', weeks_path
+
+
+= content_for :page_js do 
+	:javascript
+		loadWeeklyStatViews(); 
+		renderPage(); 

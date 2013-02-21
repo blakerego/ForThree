@@ -1,0 +1,29 @@
+!!!
+%html
+
+  %head
+    %title Fantasy Basketball Tracker
+    = stylesheet_link_tag "application", :media => "all"
+    #{csrf_meta_tags}
+  
+  %body{ "data-spy" => "scroll" }
+    .navbar.navbar-inverse.navbar-fixed-top
+      .navbar-inner
+        %a.brand{:href => "#"} For Three
+        %ul.nav
+          %li
+            %a{:href => "#{weeks_path}"} Weeks
+          %li 
+            %a{:href => "#{teams_path}"} Teams
+          %li
+            %a{:href => "#"} Matchup
+
+    .container
+      .row
+        %br 
+        %br
+        = yield
+
+  = javascript_include_tag "application"
+  = yield :page_js
+

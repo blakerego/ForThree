@@ -61,20 +61,34 @@ class WeeklyStatsController < ApplicationController
     teamName = params[:team][:name]
     puts(teamName)
 
-    team = Team.find_by_name(teamName)
 
-    @weekly_stat = WeeklyStat.new(params[:weekly_stat])
-    
+    team = Team.find_by_name(teamName)
     if team.nil? && !teamName.nil?
       team = Team.create(:name => teamName)
     end
 
-    @weekly_stat.team = team
+    puts 'TEAM: ' + team.id.to_s
 
+    #@weekly_stat = WeeklyStat.new(params[:weekly_stat])
+
+    
+    @weekly_stat = WeeklyStat.find_by_team_id_and_week_number(team.id, params[:weekly_stat][:week_number])
+    #stats = WeeklyStat.where("team_id = ? AND week_number = ?", team.id, params[:weekly_stat][:week_number])
+    updateSuccessful = false
+
+    if (@weekly_stat.nil?)
+      puts '############# No existing stat found :( ###############################'            
+      @weekly_stat = WeeklyStat.new(params[:weekly_stat])
+      @weekly_stat.team = team
+      updateSuccessful = @weekly_stat.save
+    else 
+      puts '############# FOUND EXISTING STAT RECORD ###############################'   
+      updateSuccessful = @weekly_stat.update_attributes(params[:weekly_stat])   
+    end
 
 
     respond_to do |format|
-      if @weekly_stat.save
+      if updateSuccessful
         format.html { redirect_to @weekly_stat, notice: 'Weekly stat was successfully created.' }
         format.json { render json: @weekly_stat, status: :created, location: @weekly_stat }
       else
@@ -83,6 +97,7 @@ class WeeklyStatsController < ApplicationController
       end
     end
   end
+
 
 
   # PUT /weekly_stats/1
