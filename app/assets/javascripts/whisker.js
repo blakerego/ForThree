@@ -31,13 +31,11 @@ function loadBoxAndWhisker(externalData, dataMap)
       .call(chart)
       .append("text")
       .attr("y", 10)
-      .text(function(d,i){ return dataMap[i]; })
+      .text(function(d,i)
+        { 
+          return dataMap[i]; 
+        });
 
-      ;
-
-      setInterval(function() {
-        svg.datum(randomize).call(chart.duration(1000));
-      }, 2000);
 }
 
 function randomize(d) {
