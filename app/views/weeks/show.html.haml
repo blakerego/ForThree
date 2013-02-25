@@ -1,9 +1,42 @@
 %p#notice #{notice}
 
+:css
+	body {
+	  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	}
+
+	.box {
+	  font: 10px sans-serif;
+	}
+
+	.box line,
+	.box rect,
+	.box circle {
+	  fill: #fff;
+	  stroke: #000;
+	  stroke-width: 1.5px;
+	}
+
+	.box .center {
+	  stroke-dasharray: 3,3;
+	}
+
+	.box .outlier {
+	  fill: none;
+	  stroke: #ccc;
+	}
+
+
 %h1 Week  #{@week}
 
+= content_for :page_js do 
+	:javascript
+		//var data = JSON.parse('#{raw @weekStats}');
+		var data = JSON.parse('#{raw @client_data}');
+		loadBoxAndWhisker(data);
 
-#{@weekStats}
+
+#box_plot
 
 %input{ :type => "hidden", :value => "#{@week}", :id => "week_number"}
 

@@ -21,6 +21,8 @@
 //= require teams
 
 //= require box
+//= require whisker
+
 
 _.templateSettings = {
     interpolate: /\[\[\=(.+?)\]\]/g,

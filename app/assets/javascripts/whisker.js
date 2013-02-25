@@ -10,36 +10,62 @@ var chart = d3.box()
     .width(width)
     .height(height);
 
-d3.csv("morley.csv", function(error, csv) {
-  var data = [];
+var data = [];
 
-  csv.forEach(function(x) {
-    var e = Math.floor(x.Expt - 1),
-        r = Math.floor(x.Run - 1),
-        s = Math.floor(x.Speed),
-        d = data[e];
-    if (!d) d = data[e] = [s];
-    else d.push(s);
-    if (s > max) max = s;
-    if (s < min) min = s;
-  });
 
-  chart.domain([min, max]);
+// What the data looks like: {"assists":68,"blocks":25,"field_goal_percentage":0.517,"free_throw_percentage":0.702,"id":6,"rebounds":134,"steals":22,"team_id":1,"three_pointers_made":37,"total_points":327,"turnovers":49,"week_number":14}
+dataMap = {
+  0 : "assists", 
+  1 : "blocks", 
+  2 : "field_goal_percentage", 
+  3 : "free_throw_percentage", 
+  4 : "rebounds", 
+  5 : "steals", 
+  6 : "three_pointers_made", 
+  7 : "total_points", 
+  8 : "turnovers"
+}
 
-  var svg = d3.select("body").selectAll("svg")
-      .data(data)
-    .enter().append("svg")
+
+function loadBoxAndWhisker(externalData)
+{
+  var category_index = 0;
+
+  // externalData.forEach(function(week) {
+
+  //   for(var category_index = 0; category_index < 1 ; category_index++ )
+  //   {
+  //     category = dataMap[category_index];
+  //     //console.debug(category); 
+  //     console.debug(week[category]);
+  //     stat = week[category];
+  //     var d = data[category];
+
+  //     /// If the array for this stat is null, create an array at this index with value stat. 
+  //     /// If data[category] already contains some values, add to it. 
+  //     if(!d) d = data[category] = [stat];
+  //     else d.push(stat);
+  //   }
+  // });
+
+  // chart.domain([min, max]);  
+
+
+  var svg = d3.select("#box_plot").selectAll("svg")
+      .data(externalData)
+      // .data([[1,2,2,3,4,6,5,4,2]])
+      .enter().append("svg")
       .attr("class", "box")
       .attr("width", width + margin.left + margin.right)
       .attr("height", height + margin.bottom + margin.top)
-    .append("g")
+      .append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
       .call(chart);
 
-  setInterval(function() {
-    svg.datum(randomize).call(chart.duration(1000));
-  }, 2000);
-});
+      setInterval(function() {
+        svg.datum(randomize).call(chart.duration(1000));
+      }, 2000);
+}
 
 function randomize(d) {
   if (!d.randomizer) d.randomizer = randomizer(d);
@@ -47,11 +73,13 @@ function randomize(d) {
 }
 
 function randomizer(d) {
-  var k = d3.max(d) * .02;
+  var k = d3.max(d);
   return function(d) {
-    return Math.max(min, Math.min(max, d + k * (Math.random() - .5)));
+    return d;
   };
 }
+
+
 
 // Returns a function to compute the interquartile range.
 function iqr(k) {

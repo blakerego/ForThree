@@ -15,6 +15,7 @@ d3.box = function() {
   function box(g) {
     g.each(function(d, i) {
       d = d.map(value).sort(d3.ascending);
+      //d = data["assists"].map(value).sort(d3.ascending);
       var g = d3.select(this),
           n = d.length,
           min = d[0],
