@@ -24,32 +24,27 @@ function loadBoxAndWhisker(externalData, dataMap)
       .data(externalData)
       .enter().append("svg")
       .attr("class", "box")
-      .attr("width", width + margin.left + margin.right)
-      .attr("height", height + margin.bottom + margin.top)
+      // .attr("width", width + margin.left + margin.right)
+      // .attr("height", height + margin.bottom + margin.top)
+      .attr("height", width + margin.left + margin.right + 10)
+      .attr("width", height + margin.bottom + margin.top)
       .append("g")
-      .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+      // .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+
+
       .call(chart)
+      .attr("transform", "rotate(90 220 260)")
+      //.attr("transform", "translate(100)")
       .append("text")
       .attr("y", 10)
       .text(function(d,i)
         { 
           return dataMap[i]; 
-        });
+        })
+      ;
+
 
 }
-
-function randomize(d) {
-  if (!d.randomizer) d.randomizer = randomizer(d);
-  return d.map(d.randomizer);
-}
-
-function randomizer(d) {
-  var k = d3.max(d);
-  return function(d) {
-    return d;
-  };
-}
-
 
 
 // Returns a function to compute the interquartile range.
