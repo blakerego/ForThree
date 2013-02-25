@@ -39,4 +39,5 @@ gem 'jquery-rails'
 
 group :development do 
   gem 'better_errors'
+  gem 'binding_of_caller' #Only use this if on a trusted network.
 end
