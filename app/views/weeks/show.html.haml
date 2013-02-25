@@ -33,7 +33,8 @@
 	:javascript
 		//var data = JSON.parse('#{raw @weekStats}');
 		var data = JSON.parse('#{raw @client_data}');
-		loadBoxAndWhisker(data);
+		var dataMap = JSON.parse('#{raw @dataMap}');
+		loadBoxAndWhisker(data, dataMap);
 
 
 #box_plot

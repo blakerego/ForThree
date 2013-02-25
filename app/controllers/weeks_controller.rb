@@ -60,19 +60,18 @@ class WeeksController < ApplicationController
     @weekStats = @weekStats.to_json;    
     @teamNames = @teamNames.to_json; 
     
-    # @client_data = {};
-    # @client_data[:assists] = @assists;
-    # @client_data[:blocks] = @blocks;
-    # @client_data[:field_goal_percentage] = @fgp;
-    # @client_data[:free_throw_percentage] = @ftp;
-    # @client_data[:rebounds] = @rebounds; 
-    # @client_data[:steals] = @steals; 
-    # @client_data[:total_points] = @points; 
-    # @client_data[:turnovers] = @turnovers; 
-    # @client_data = @client_data.to_json;
-
-    @client_data = [@tpm, @assists, @blocks, @rebounds, @steals, @points].to_json;
-
+    @client_data = [@tpm, @assists, @blocks, @fgp, @ftp, @rebounds, @steals, @points, @turnovers].to_json;
+    @dataMap = {
+      0 => "3PM", 
+      1 => "Assists", 
+      2 => "Blocks", 
+      3 => "FG%", 
+      4 => "FT%", 
+      5 => "Rebounds", 
+      6 => "Steals", 
+      7 => "Points", 
+      8 => "TO"
+    }.to_json
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @week }
