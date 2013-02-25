@@ -24,25 +24,23 @@ function loadBoxAndWhisker(externalData, dataMap)
       .data(externalData)
       .enter().append("svg")
       .attr("class", "box")
-      // .attr("width", width + margin.left + margin.right)
-      // .attr("height", height + margin.bottom + margin.top)
-      .attr("height", width + margin.left + margin.right + 10)
+      .attr("height", width + margin.left + margin.right)
       .attr("width", height + margin.bottom + margin.top)
       .append("g")
-      // .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-
-
       .call(chart)
       .attr("transform", "rotate(90 220 260)")
-      //.attr("transform", "translate(100)")
+
       .append("text")
-      .attr("y", 10)
+      .attr("y", -20)
+      .attr("x", -height )
+      .attr("transform", "rotate(-90)")
+      .attr("class", "category_headers")
+      .attr("style", "title")
       .text(function(d,i)
         { 
           return dataMap[i]; 
         })
       ;
-
 
 }
 
