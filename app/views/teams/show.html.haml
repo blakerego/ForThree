@@ -1,3 +1,4 @@
+
 %p#notice #{notice}
 
 
@@ -48,56 +49,22 @@
 
   %br
 
-  :css
-    body {
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      position: relative;
-      width: 960px;
-    }
-
-    .axis text {
-      font: 10px sans-serif;
-    }
-
-    .axis path,
-    .axis line {
-      fill: none;
-      stroke: #000;
-      shape-rendering: crispEdges;
-    }
-
-    .bar {
-      fill: steelblue;
-      fill-opacity: .9;
-    }
-
-    .x.axis path {
-      display: none;
-    }
-
-    label {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-    }
 
 
-  #{@leagueAssistAvgs}
-  #{@leagueBlocksAvgs}
 
-  = content_for :page_js do 
-    :javascript
-      setAssists(JSON.parse('#{raw @assists}'));
-      setBlocks(JSON.parse('#{raw @blocks}'));
-      setFGP(JSON.parse('#{raw @field_goal_percentage}'));
-      setFTP(JSON.parse('#{@free_throw_percentage}'));
-      setRebounds(JSON.parse('#{@rebounds}'));
-      setSteals(JSON.parse('#{@steals}'));
-      set3PM(JSON.parse('#{@three_pointers_made}'));
-      setPoints(JSON.parse('#{@total_points}'));
-      setTurnovers(JSON.parse(' #{@turnovers} '));
+= content_for :page_js do 
+  :javascript
+    setAssists(JSON.parse('#{raw @assists}'));
+    setBlocks(JSON.parse('#{raw @blocks}'));
+    setFGP(JSON.parse('#{raw @field_goal_percentage}'));
+    setFTP(JSON.parse('#{@free_throw_percentage}'));
+    setRebounds(JSON.parse('#{@rebounds}'));
+    setSteals(JSON.parse('#{@steals}'));
+    set3PM(JSON.parse('#{@three_pointers_made}'));
+    setPoints(JSON.parse('#{@total_points}'));
+    setTurnovers(JSON.parse(' #{@turnovers} '));
 
-      graph(JSON.parse('#{raw @assists}'), 'Assists'); 
+    graph(JSON.parse('#{raw @assists}'), 'Assists'); 
 
 
 

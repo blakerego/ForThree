@@ -68,9 +68,6 @@ class WeeklyStatsController < ApplicationController
     end
 
     puts 'TEAM: ' + team.id.to_s
-
-    #@weekly_stat = WeeklyStat.new(params[:weekly_stat])
-
     
     @weekly_stat = WeeklyStat.find_by_team_id_and_week_number(team.id, params[:weekly_stat][:week_number])
     #stats = WeeklyStat.where("team_id = ? AND week_number = ?", team.id, params[:weekly_stat][:week_number])
