@@ -4,10 +4,8 @@
 
   %h1 All Teams
 
-
-  /%ul.nav.nav-pills.nav-stacked
   %ul.nav.nav-list
-    = @teams.each do |team| 
+    - @teams.each do |team| 
       %li 
         = link_to team.name, team
 

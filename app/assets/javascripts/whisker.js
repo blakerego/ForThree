@@ -63,6 +63,33 @@ function loadCheckboxes(teamNames)
 {
   for(var i = 0; i<teamNames.length; i++)
   {
-    $('#team_name_checkboxes').append('<br/><input type="checkbox" class="nav nav_pills" value="' + i + '">' + teamNames[i] + '</type>');    
+    $('#team_name_checkboxes').append('<br/><li class="team_li" id="li_' + i + '" ><a id="' + i + '" value="' + i + '" href="#">' + teamNames[i] + '</a></li></type>');    
   }
+}
+
+function teamClickHandler(event)
+{
+  elementId = event.target.id;
+  a_element = $('#'+ elementId);
+  var value = a_element.attr('value');
+
+  li_element = $('#li_'+ elementId);
+  
+  if (stringContains(li_element[0].className, 'active'))
+  {
+    // Already active. Deactivate. 
+    li_element.removeClass('active');    
+  } 
+  else 
+  {
+    // Activate now. 
+    li_element.addClass('active');  
+
+  }
+
+}
+
+function stringContains(s, subString)
+{
+  return s.indexOf(subString) !== -1  
 }
