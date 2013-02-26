@@ -16,8 +16,7 @@ $('.btn-stat').click(function(event)
 {
   if(currentMode != event.target.id)
   {
-    $('#teamStatRow').empty();
-    
+    $('#teamStatRow').empty()   
     currentMode = event.target.id; 
     if (currentMode == 'assists_mode')
     {
@@ -59,8 +58,15 @@ $('.btn-stat').click(function(event)
     {
       graph(tpmData, 'Three Pointers Made');
     }
+    setActiveElement(event.target.id);
   }
 });
+
+function setActiveElement(elementId)
+{
+  $('li').attr('class', 'stat_li');
+  $('#' + elementId + '_li').addClass('active');  
+}
 
 function setAssists(data)
 {

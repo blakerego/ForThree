@@ -58,3 +58,11 @@ function iqr(k) {
     return [i, j];
   };
 }
+
+function loadCheckboxes(teamNames)
+{
+  for(var i = 0; i<teamNames.length; i++)
+  {
+    $('#team_name_checkboxes').append('<br/><input type="checkbox" class="nav nav_pills" value="' + i + '">' + teamNames[i] + '</type>');    
+  }
+}

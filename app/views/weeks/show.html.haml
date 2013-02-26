@@ -1,19 +1,21 @@
 %p#notice #{notice}
 
-%h1 Week  #{@week}
+%h1.offset1 Week  #{@week}
 
 = content_for :page_js do 
 	:javascript
 		var data = JSON.parse('#{raw @client_data}');
 		var dataMap = JSON.parse('#{raw @dataMap}');
 		loadBoxAndWhisker(data, dataMap);
-
+		loadCheckboxes(JSON.parse('#{raw @teamNames}'));
 
 #box_plot.span8.offset2
 
 %input{ :type => "hidden", :value => "#{@week}", :id => "week_number"}
 
-#weekly_stat_list_placeholder
+#team_name_checkboxes
+
+#weekly_stat_list_placeholder.offset1
 
 .well
 	%legend Add Research Here:

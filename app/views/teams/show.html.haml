@@ -10,43 +10,39 @@
 
 
 .span3
-  %ul.nav.nav-stacked
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#assists_mode
+  %ul.nav.nav-list
+    %li.stat_li#assists_mode_li
+      %a.btn-stat#assists_mode
         Assists
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#blocks_mode
+    %li.stat_li#blocks_mode_li
+      %a.btn-stat#blocks_mode
         Blocks
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#points_mode
+    %li.stat_li#points_mode_li
+      %a.btn-stat#points_mode
         Points 
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#fg_p_mode
+    %li.stat_li#fg_p_mode_li
+      %a.btn-stat#fg_p_mode
         FG Percentage (%)
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#ft_p_mode
+    %li.stat_li#ft_p_mode_li
+      %a.btn-stat#ft_p_mode
         FT Percentage (%)
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#turnovers_mode
+    %li.stat_li#turnovers_mode_li
+      %a.btn-stat#turnovers_mode
         Turnovers
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#steals_mode
+    %li.stat_li#steals_mode_li
+      %a.btn-stat#steals_mode
         Steals
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#3pm_mode
+    %li.stat_li#3pm_mode_li
+      %a.btn-stat#3pm_mode
         Three Pointers
-    %li
-      %a.btn.btn-large.btn-primary.btn-stat#rebounds_mode
+    %li.stat_li#rebounds_mode_li
+      %a.btn-stat#rebounds_mode
         Rebounds
 
 
 .span9
   #teamStatRow
   
-
-  / %label 
-  /   %input{:type => "checkbox"} Sort values
-
   %br
 
 
@@ -65,6 +61,7 @@
     setTurnovers(JSON.parse(' #{@turnovers} '));
 
     graph(JSON.parse('#{raw @assists}'), 'Assists'); 
+    setActiveElement('assists_mode');
 
 
 
