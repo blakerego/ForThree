@@ -16,4 +16,6 @@ class Team < ActiveRecord::Base
   attr_accessible  :bench2_id
   attr_accessible  :bench3_id
   attr_accessible  :week_number
+
+  validates :name, :uniqueness => true
 end
