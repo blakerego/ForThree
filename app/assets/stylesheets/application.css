@@ -11,3 +11,9 @@
  *= require_self
  *= require_tree .
  */
+
+
+#team_name_checkboxes
+{
+  position: fixed;
+}

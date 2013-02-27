@@ -80,7 +80,12 @@ function loadCheckboxes(teamNames)
   TeamNames = teamNames;
   for(var i = 0; i<teamNames.length; i++)
   {
-    $('#team_name_checkboxes').append('<br/><li class="team_li" id="li_' + i + '" ><a id="' + i + '" value="' + i + '" href="#">' + teamNames[i] + '</a></li></type>');    
+    c = availableColors[i];
+    $('#team_name_checkboxes').append('<br/><li class="team_li" id="li_' + i + '" ><a id="' 
+      + i + '" value="' + i + '" href="#">' 
+      + '  <span align="center" style="background:' + c + '; color:'+ c + ' ">____</span>   '
+      + teamNames[i] 
+      + '</a></li></type>');    
   }
 }
 
@@ -116,20 +121,31 @@ function activateCirclesForTeam(teamValue)
     var currentDataList = allData[i];
     var statValue = currentDataList[teamValue];
     var subDiv = '#box_plot_' + i; 
-    d3.select(subDiv).selectAll("svg").selectAll("g")
+    d3.select(subDiv).selectAll("g")
       .append('circle')
       .attr('id', 'circle_' + teamValue)
       .attr('cx', 10)
       .attr('cy', x1Map[i](statValue))
       .attr('r',8)
-      .style("fill", availableColors[teamValue])      
+      .style("fill", availableColors[teamValue])
       ;  
+
+    // d3.select(subDiv).selectAll("g")
+    //   .append('text')
+    //   .attr('cx', 10)
+    //   .attr('cy', x1Map[i](statValue))
+    //   .attr("class", "category_headers")
+    //   .attr("style", "title")      
+    //   .text('asdfasdfadfsa')
+
   }
 }
 
 function deactivateCirclesForTeam(teamValue)
 {
-  d3.selectAll('#circle_' + teamValue).remove();
+  d3.selectAll('#circle_' + teamValue)
+    // .exit()
+    .remove();
 }
 
 function stringContains(s, subString)
