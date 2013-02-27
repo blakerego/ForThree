@@ -83,7 +83,7 @@ function loadCheckboxes(teamNames)
     c = availableColors[i];
     $('#team_name_checkboxes').append('<br/><li class="team_li" id="li_' + i + '" ><a id="' 
       + i + '" value="' + i + '" href="#">' 
-      + '  <span align="center" style="background:' + c + '; color:'+ c + ' ">____</span>   '
+      + '  <span class="color_legend" style="background:' + c + '; color:'+ c + ' ">____</span>   '
       + teamNames[i] 
       + '</a></li></type>');    
   }
@@ -144,7 +144,6 @@ function activateCirclesForTeam(teamValue)
 function deactivateCirclesForTeam(teamValue)
 {
   d3.selectAll('#circle_' + teamValue)
-    // .exit()
     .remove();
 }
 
@@ -154,4 +153,4 @@ function stringContains(s, subString)
 }
 
 
-var availableColors = ["LightSteelBlue","LightYellow","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow"]
+var availableColors = ["SteelBlue","LimeGreen","Red","Magenta","Maroon","Blue","Purple","SeaGreen","SlateBlue","Olive","MediumTurquoise","MediumVioletRed","Moccasin","Navy","Orange","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow"]

@@ -17,3 +17,8 @@
 {
   position: fixed;
 }
+
+.color_legend
+{
+  border:2px solid black;
+}
