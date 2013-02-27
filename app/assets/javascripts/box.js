@@ -241,7 +241,6 @@ d3.box = function() {
     });
     d3.timer.flush();
 
-    console.debug(boxIndex);
     boxIndex++;     
   }
 

@@ -95,36 +95,41 @@ function teamClickHandler(event)
   if (stringContains(li_element[0].className, 'active'))
   {
     // Already active. Deactivate. 
-    li_element.removeClass('active');    
+    li_element.removeClass('active');   
+    deactivateCirclesForTeam(value);  
   } 
   else 
   {
     // Activate now. 
     li_element.addClass('active');  
-    drawCirclesForTeam(value); 
+    activateCirclesForTeam(value); 
   }
 
 }
 
-function drawCirclesForTeam(value) 
+function activateCirclesForTeam(teamValue) 
 {
-  var team = TeamNames[value];
-  console.debug(team);
+  var team = TeamNames[teamValue];
 
   for(var i = 0; i < allData.length; i++)
   {
     var currentDataList = allData[i];
-    var statValue = currentDataList[value];
-    console.debug(statValue);
+    var statValue = currentDataList[teamValue];
     var subDiv = '#box_plot_' + i; 
     d3.select(subDiv).selectAll("svg").selectAll("g")
       .append('circle')
+      .attr('id', 'circle_' + teamValue)
       .attr('cx', 10)
       .attr('cy', x1Map[i](statValue))
       .attr('r',8)
-      .style("fill", availableColors[value])      
+      .style("fill", availableColors[teamValue])      
       ;  
   }
+}
+
+function deactivateCirclesForTeam(teamValue)
+{
+  d3.selectAll('#circle_' + teamValue).remove();
 }
 
 function stringContains(s, subString)
@@ -133,4 +138,4 @@ function stringContains(s, subString)
 }
 
 
-var availableColors = ["LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow"]
+var availableColors = ["LightSteelBlue","LightYellow","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow"]
