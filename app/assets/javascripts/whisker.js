@@ -1,3 +1,7 @@
+var availableColors = [
+
+]
+
 var margin = {top: 10, right: 50, bottom: 20, left: 50},
     width = 120 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
@@ -117,7 +121,9 @@ function drawCirclesForTeam(value)
       .append('circle')
       .attr('cx', 10)
       .attr('cy', x1Map[i](statValue))
-      .attr('r',8);  
+      .attr('r',8)
+      .style("fill", availableColors[value])      
+      ;  
   }
 }
 
@@ -125,3 +131,6 @@ function stringContains(s, subString)
 {
   return s.indexOf(subString) !== -1  
 }
+
+
+var availableColors = ["LightSteelBlue","LightYellow","Lime","LimeGreen","Linen","Magenta","Maroon","MediumAquaMarine","MediumBlue","MediumOrchid","MediumPurple","MediumSeaGreen","MediumSlateBlue","MediumSpringGreen","MediumTurquoise","MediumVioletRed","MidnightBlue","MintCream","MistyRose","Moccasin","NavajoWhite","Navy","OldLace","Olive","OliveDrab","Orange","OrangeRed","Orchid","PaleGoldenRod","PaleGreen","PaleTurquoise","PaleVioletRed","PapayaWhip","PeachPuff","Peru","Pink","Plum","PowderBlue","Purple","Red","RosyBrown","RoyalBlue","SaddleBrown","Salmon","SandyBrown","SeaGreen","SeaShell","Sienna","Silver","SkyBlue","SlateBlue","SlateGray","SlateGrey","Snow","SpringGreen","SteelBlue","Tan","Teal","Thistle","Tomato","Turquoise","Violet","Wheat","White","WhiteSmoke","Yellow"]
