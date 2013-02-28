@@ -13,4 +13,6 @@ class WeeklyStat < ActiveRecord::Base
   attr_accessible  :total_points
 
   validates :team_id, { :presence => true }  
+
+  validates_uniqueness_of :week_number, :scope => :team_id
 end
