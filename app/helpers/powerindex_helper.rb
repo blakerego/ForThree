@@ -1,0 +1,2 @@
+module PowerindexHelper
+end

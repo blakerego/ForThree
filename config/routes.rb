@@ -4,6 +4,7 @@ ForThree::Application.routes.draw do
   resources :weekly_stats
   resources :teams
   resources :yahoo_receiver, :only => 'index'
+  resources :powerindex, :only => 'index'
   match 'matchup' => 'static#headToHead'
   
   match ':action' => 'static#:action'
